@@ -8,7 +8,6 @@ def create(db: Session, request: CommentBase):
         text = request.text,
         username = request.username,
         post_id = request.post_id,
-        user_id = request.user_id,
         timestamp = datetime.now()
     )
 
@@ -33,8 +32,13 @@ def delete_comment(db: Session, username: str, comment_id: int):
 
 def update_comment(request: CommentUpdate, db: Session, username: str, comment_id: int):
     comment = db.query(DbComment).filter(DbComment.id == comment_id).first()
+    print(comment.username)
+    print(username)
     if comment.username == username:
         comment.text = request.text
+        db.add(comment)
+        db.commit()
+        db.refresh(comment)
     else: 
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                             detail='Only creator of comment can delete comment!')

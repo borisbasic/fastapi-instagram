@@ -25,6 +25,7 @@ class PostBase(BaseModel):
 
 
 class User(BaseModel):
+    id: int
     username: str
 
 class Comment(BaseModel):
@@ -55,7 +56,6 @@ class CommentBase(BaseModel):
     username: str
     text: str
     post_id: int
-    user_id: int
 
 class CommentUpdate(BaseModel):
     text: str

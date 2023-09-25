@@ -27,4 +27,4 @@ def delete_comment(comment_id: int, db: Session = Depends(get_db), current_user:
 
 @router.put('')
 def update_comment(request: CommentUpdate, comment_id: int, db: Session = Depends(get_db), current_user : UserAuth = Depends(get_current_user)):
-    return db_comment.update_comment(db, current_user.username, comment_id, request)
+    return db_comment.update_comment(request, db, current_user.username, comment_id)

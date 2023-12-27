@@ -1,4 +1,4 @@
-#!/home/boris/Documents/tutorials/fast_api_instagram/venv/bin/python3
+#!/home/boris/Documents/fastapi/fastapi-instagram/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

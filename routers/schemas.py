@@ -11,11 +11,12 @@ class UserBase(BaseModel):
     password: str
 
 class UserDisplay(BaseModel):
+    id: int
     username: str
     email: str
     profile_image: ImageDisplay | None
-    class Config():
-        orm_mode = True
+    class ConfigDict():
+        from_attributes = True
 
 class PostBase(BaseModel):
     image_url: str
@@ -32,8 +33,8 @@ class Comment(BaseModel):
     text: str
     username: str
     timestamp: datetime
-    class Config():
-        orm_mode = True
+    class ConfigDict():
+        from_attributes = True
 
 class PostDisplay(BaseModel):
     id: int
@@ -43,8 +44,8 @@ class PostDisplay(BaseModel):
     timestamp: datetime
     user: User
     comments: List[Comment]
-    class Config():
-        orm_mode = True
+    class ConfigDict():
+        from_attributes = True
 
 
 class UserAuth(BaseModel):

@@ -3,6 +3,7 @@ from database.models import DbComment
 from routers.schemas import CommentBase, CommentUpdate
 from datetime import datetime
 from fastapi import HTTPException, status
+from typing import List
 
 
 def create(db: Session, request: CommentBase):

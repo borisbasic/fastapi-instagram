@@ -156,14 +156,14 @@ def test_user_post_delete(client):
         "/user",
         json={"username": "boris", "email": "boris@boris.com", "password": "123"},
     )
-    creator_id = response.json()["id"]
+    # creator_id = response.json()["id"]
     data_ = response.json()
     response = client.post(
         "/login", data={"username": data_["username"], "password": "123"}
     )
 
     access_token = response.json()["access_token"]
-
+    creator_id = response.json()["user_id"]
     response = client.post(
         "/post",
         json={

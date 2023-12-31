@@ -9,6 +9,7 @@ import random, string, shutil
 from routers.schemas import UserAuth
 from auth.oauth2 import get_current_user
 from database.db_post import get_user_posts
+from database.models import DbPost, DbUser
 
 router = APIRouter(prefix="/post", tags=["post"])
 
@@ -73,3 +74,24 @@ def get(
     current_user: UserAuth = Depends(get_current_user),
 ):
     return db_post.get_other_posts(db, id)
+
+
+@router.get("/user_post/{user_id}/{post_id}", response_model=PostDisplay)
+def get(
+    user_id: int,
+    post_id: int,
+    db: Session = Depends(get_db),
+    current_user: UserAuth = Depends(get_current_user),
+):
+    post = (
+        db.query(DbPost)
+        .filter(DbPost.id == post_id and DbPost.user_id == user_id)
+        .first()
+    )
+    if not post:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Post with id {post_id} and {user_id} not found",
+        )
+
+    return post

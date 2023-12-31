@@ -26,7 +26,9 @@ def delete(db: Session, id: int, user_id: int):
     if not post:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, 
                             detail=f'Post with id {id} not found.')
-    if post.user_id == user_id:
+    print(user_id.id)
+    print(f'post_user_id {post.user_id}')
+    if post.user_id != user_id.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
                             detail='Only post creator can delete post.')
     db.delete(post)

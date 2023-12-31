@@ -14,6 +14,7 @@ class UserDisplay(BaseModel):
     id: int
     username: str
     email: str
+    password: str
     profile_image: ImageDisplay | None
     class ConfigDict():
         from_attributes = True
@@ -64,3 +65,10 @@ class CommentUpdate(BaseModel):
 class ProfileImage(BaseModel):
     image_url: str
     user_id: int
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    user_id: int
+    username: str

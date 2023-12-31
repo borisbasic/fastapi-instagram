@@ -2,13 +2,16 @@ from pydantic import BaseModel, Field
 from datetime import datetime
 from typing import List, Optional
 
+
 class ImageDisplay(BaseModel):
-    image_url:  str
+    image_url: str
+
 
 class UserBase(BaseModel):
     username: str
     email: str
     password: str
+
 
 class UserDisplay(BaseModel):
     id: int
@@ -16,8 +19,10 @@ class UserDisplay(BaseModel):
     email: str
     password: str
     profile_image: ImageDisplay | None
-    class ConfigDict():
+
+    class ConfigDict:
         from_attributes = True
+
 
 class PostBase(BaseModel):
     image_url: str
@@ -30,12 +35,15 @@ class User(BaseModel):
     id: int
     username: str
 
+
 class Comment(BaseModel):
     text: str
     username: str
     timestamp: datetime
-    class ConfigDict():
+
+    class ConfigDict:
         from_attributes = True
+
 
 class PostDisplay(BaseModel):
     id: int
@@ -45,7 +53,8 @@ class PostDisplay(BaseModel):
     timestamp: datetime
     user: User
     comments: List[Comment]
-    class ConfigDict():
+
+    class ConfigDict:
         from_attributes = True
 
 
@@ -54,13 +63,16 @@ class UserAuth(BaseModel):
     username: str
     email: str
 
+
 class CommentBase(BaseModel):
     username: str
     text: str
     post_id: int
 
+
 class CommentUpdate(BaseModel):
     text: str
+
 
 class ProfileImage(BaseModel):
     image_url: str

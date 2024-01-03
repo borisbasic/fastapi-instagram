@@ -1,0 +1,12 @@
+fastapi
+sqlalchemy
+typing
+pydantic
+python-jose
+uvicorn[standard]
+passlib
+anyio
+python-multipart
+httpx
+jose
+multipart

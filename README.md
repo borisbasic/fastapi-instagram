@@ -1,4 +1,4 @@
-# FOOTBALL STATS
+# INSTAGRAM
 instagram backend
 
 ## INSTALL

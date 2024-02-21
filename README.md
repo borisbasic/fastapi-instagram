@@ -9,9 +9,9 @@ instagram backend
 
 ## CLONE
 
-git clone https://github.com/borisbasic/football_stats
+git clone https://github.com/borisbasic/fastapi-instagram
 
-cd football_stats
+cd fastapi-instagram
 
 ## Install virtual enviroment (venv)
 
